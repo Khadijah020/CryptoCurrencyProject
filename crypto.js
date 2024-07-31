@@ -5,15 +5,15 @@ const APIURL = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&p
 
 
 
-const getCrypto = async () => {
+const getCoins = async () => {
     const response = await fetch(APIURL)
     const data = await response.json()
     console.log(data)
-    getEachCrypto(data)
+    getEachCoin(data)
 }
 
 
-const getEachCrypto = async (data) => {
+const getEachCoin = async (data) => {
 
     const tbody = document.querySelector("tbody")
 
@@ -45,9 +45,10 @@ const getEachCrypto = async (data) => {
     });
 }
 
- getCrypto()
- 
- setInterval(getCrypto,100000)
+getCoins()
+
+//Functionality to reload data every 10 seconds.
+setInterval(getCoins, 10000)
 
 
 
